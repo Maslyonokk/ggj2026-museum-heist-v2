@@ -22,6 +22,9 @@ var distraction_position : Vector2
 
 var vase_stolen : bool = false
 
+@onready var laser : Sprite2D = get_node("../Laser")
+@onready var vase : AnimatedSprite2D = get_node("../Vase")
+
 @onready var speaker : Area2D = get_node("../Speaker")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,6 +33,9 @@ func _process(delta: float) -> void:
 		robber_path_follow.progress += robber_speed * delta
 	if guard_moving:
 		guard_path_follow.progress += guard_speed * delta
+		
+	if robber_path_follow.progress_ratio >= 0.99:
+		break_display_case()
 
 
 
@@ -87,3 +93,15 @@ func _on_window_4_window_broken(pos: Variant) -> void:
 	print(pos)
 	distraction_position = pos
 	guard_distract(distraction_position)
+
+
+func _on_electrical_box_elbox_turned_off() -> void:
+	laser.turn_off()
+
+
+func break_display_case():
+	robber_tresspassing = true
+	robber.play_smash()
+	vase.glass_break()
+	
+	

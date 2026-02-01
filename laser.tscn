@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://csbx5onjtq1pk"]
+
+[ext_resource type="Texture2D" uid="uid://s684mufqdoe2" path="res://Assets/emitter.png" id="1_6vqwg"]
+[ext_resource type="Script" uid="uid://cjpmo4md8gqi3" path="res://laser.gd" id="2_7vci3"]
+[ext_resource type="Texture2D" uid="uid://b36oqq00ufosj" path="res://Assets/laser.png" id="2_g6b45"]
+
+[node name="Laser" type="Sprite2D" unique_id=1570455104]
+texture = ExtResource("1_6vqwg")
+script = ExtResource("2_7vci3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=970019185]
+position = Vector2(-1, 228)
+scale = Vector2(1, 1.7589285)
+texture = ExtResource("2_g6b45")

@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dg32mv1p20fmu" path="res://speaker.tscn" id="7_i2041"]
 [ext_resource type="PackedScene" uid="uid://c0cyr3ua7d5s5" path="res://window.tscn" id="8_xy4tn"]
 [ext_resource type="PackedScene" uid="uid://bayu7ppu8xocy" path="res://electrical_box.tscn" id="9_usj0q"]
+[ext_resource type="PackedScene" uid="uid://csbx5onjtq1pk" path="res://laser.tscn" id="10_5j5gb"]
+[ext_resource type="PackedScene" uid="uid://cx3g4e5pi67fe" path="res://vase.tscn" id="11_mx85b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v38iq"]
 texture = ExtResource("1_dopym")
@@ -53,6 +55,7 @@ curve = SubResource("Curve2D_ootpb")
 position = Vector2(121, 320)
 rotation = 0.03140329
 rotates = false
+loop = false
 
 [node name="Robber" parent="RobberPath/PathFollow2D" unique_id=1269839090 instance=ExtResource("4_v8kj3")]
 
@@ -84,7 +87,13 @@ position = Vector2(721, 186)
 position = Vector2(901, 186)
 
 [node name="ElectricalBox" parent="." unique_id=257575083 instance=ExtResource("9_usj0q")]
-position = Vector2(558, 215)
+position = Vector2(558, 199)
+
+[node name="Laser" parent="." unique_id=1570455104 instance=ExtResource("10_5j5gb")]
+position = Vector2(855, 222)
+
+[node name="Vase" parent="." unique_id=894306001 instance=ExtResource("11_mx85b")]
+position = Vector2(1012, 343)
 
 [connection signal="done_being_distracted" from="GuardPath/PathFollow2D/Guard" to="EventHandler" method="_on_guard_done_being_distracted"]
 [connection signal="speaker_playing" from="Speaker" to="EventHandler" method="_on_speaker_speaker_playing"]
@@ -93,3 +102,4 @@ position = Vector2(558, 215)
 [connection signal="window_broken" from="Window2" to="EventHandler" method="_on_window_2_window_broken"]
 [connection signal="window_broken" from="Window3" to="EventHandler" method="_on_window_3_window_broken"]
 [connection signal="window_broken" from="Window4" to="EventHandler" method="_on_window_4_window_broken"]
+[connection signal="elbox_turned_off" from="ElectricalBox" to="EventHandler" method="_on_electrical_box_elbox_turned_off"]

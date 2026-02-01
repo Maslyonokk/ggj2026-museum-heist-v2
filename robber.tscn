@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d2024ewd2ayov"]
 
 [ext_resource type="Texture2D" uid="uid://ck3tagnhimqot" path="res://Assets/smash.png" id="1_i72hc"]
+[ext_resource type="Script" uid="uid://cckawdrhrg1nf" path="res://robber.gd" id="1_ipevd"]
 [ext_resource type="Texture2D" uid="uid://4v0ba6rl4var" path="res://Assets/steal.png" id="2_ipevd"]
 [ext_resource type="Texture2D" uid="uid://w5tf73w1kh46" path="res://Assets/player.png" id="3_a2r60"]
 
@@ -146,10 +147,13 @@ radius = 17.0
 height = 64.0
 
 [node name="Robber" type="CharacterBody2D" unique_id=1269839090 groups=["robber"]]
+script = ExtResource("1_ipevd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=650997596]
 sprite_frames = SubResource("SpriteFrames_ul6jo")
-animation = &"walk"
+animation = &"smash"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1739389375]
 shape = SubResource("CapsuleShape2D_towbt")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
