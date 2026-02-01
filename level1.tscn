@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bayu7ppu8xocy" path="res://electrical_box.tscn" id="9_usj0q"]
 [ext_resource type="PackedScene" uid="uid://csbx5onjtq1pk" path="res://laser.tscn" id="10_5j5gb"]
 [ext_resource type="PackedScene" uid="uid://cx3g4e5pi67fe" path="res://vase.tscn" id="11_mx85b"]
+[ext_resource type="PackedScene" uid="uid://bbmhv7o4d0e5n" path="res://ui.tscn" id="12_hx44q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v38iq"]
 texture = ExtResource("1_dopym")
@@ -39,6 +40,9 @@ _data = {
 }
 point_count = 14
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_mx85b"]
+radius = 42.0119
+
 [node name="Node2D" type="Node2D" unique_id=444309336]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1605334561]
@@ -63,9 +67,9 @@ loop = false
 curve = SubResource("Curve2D_v38iq")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="GuardPath" unique_id=180089368]
-position = Vector2(281, 477)
-rotation = -0.19150172
-rotates = false
+position = Vector2(368.86124, 595.7184)
+rotation = -3.113822
+progress = 1111.11
 
 [node name="Guard" parent="GuardPath/PathFollow2D" unique_id=1914350391 instance=ExtResource("5_crycw")]
 
@@ -95,6 +99,24 @@ position = Vector2(855, 222)
 [node name="Vase" parent="." unique_id=894306001 instance=ExtResource("11_mx85b")]
 position = Vector2(1012, 343)
 
+[node name="Area2D" type="Area2D" parent="Vase" unique_id=1145468739]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vase/Area2D" unique_id=892369072]
+shape = SubResource("CircleShape2D_mx85b")
+
+[node name="Control" parent="." unique_id=570524337 instance=ExtResource("12_hx44q")]
+light_mask = 16
+visibility_layer = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 588.0
+offset_top = 337.0
+offset_right = 588.0
+offset_bottom = 337.0
+
 [connection signal="done_being_distracted" from="GuardPath/PathFollow2D/Guard" to="EventHandler" method="_on_guard_done_being_distracted"]
 [connection signal="speaker_playing" from="Speaker" to="EventHandler" method="_on_speaker_speaker_playing"]
 [connection signal="speaker_stopped" from="Speaker" to="EventHandler" method="_on_speaker_speaker_stopped"]
@@ -102,4 +124,7 @@ position = Vector2(1012, 343)
 [connection signal="window_broken" from="Window2" to="EventHandler" method="_on_window_2_window_broken"]
 [connection signal="window_broken" from="Window3" to="EventHandler" method="_on_window_3_window_broken"]
 [connection signal="window_broken" from="Window4" to="EventHandler" method="_on_window_4_window_broken"]
+[connection signal="elbox_messed_with" from="ElectricalBox" to="EventHandler" method="_on_electrical_box_elbox_messed_with"]
 [connection signal="elbox_turned_off" from="ElectricalBox" to="EventHandler" method="_on_electrical_box_elbox_turned_off"]
+[connection signal="body_entered" from="Vase/Area2D" to="EventHandler" method="_on_area_2d_body_entered"]
+[connection signal="restart" from="Control" to="EventHandler" method="_on_control_restart"]

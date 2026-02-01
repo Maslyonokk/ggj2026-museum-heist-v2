@@ -24,8 +24,11 @@ var vase_stolen : bool = false
 
 @onready var laser : Sprite2D = get_node("../Laser")
 @onready var vase : AnimatedSprite2D = get_node("../Vase")
+@onready var elbox : AnimatedSprite2D = get_node("../ElectricalBox")
 
 @onready var speaker : Area2D = get_node("../Speaker")
+
+@onready var ui : Control = get_node("../Control")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -34,8 +37,6 @@ func _process(delta: float) -> void:
 	if guard_moving:
 		guard_path_follow.progress += guard_speed * delta
 		
-	if robber_path_follow.progress_ratio >= 0.99:
-		break_display_case()
 
 
 
@@ -95,13 +96,44 @@ func _on_window_4_window_broken(pos: Variant) -> void:
 	guard_distract(distraction_position)
 
 
+func _on_electrical_box_elbox_messed_with() -> void:
+	robber_tresspassing = true
+	if !guard_distracted:
+		flashlight.look_at(elbox.global_position)
+		if robber_tresspassing:
+			game_over()
+
+
+
 func _on_electrical_box_elbox_turned_off() -> void:
 	laser.turn_off()
+	robber_tresspassing = false
 
 
 func break_display_case():
 	robber_tresspassing = true
+	robber_moving = false
 	robber.play_smash()
 	vase.glass_break()
 	
 	
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("robber"):
+		break_display_case()
+
+
+func _on_control_restart() -> void:
+	get_tree().reload_current_scene()
+
+func game_over():
+	print("game over!!!!!!!!!!!!!")
+	robber_moving  = false
+	guard_moving = false
+	#flashlight.visible = false
+	ui.game_over()
+	
+
+func game_won():
+	pass

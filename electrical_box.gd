@@ -4,12 +4,14 @@ extends AnimatedSprite2D
 @onready var timer : Timer = get_node("Timer")
 
 signal elbox_turned_off
+signal elbox_messed_with
 
 func _ready() -> void:
 	play()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("robber"):
+		elbox_messed_with.emit()
 		timer.start()
 		speed_scale = 5
 

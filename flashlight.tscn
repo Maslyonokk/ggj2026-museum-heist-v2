@@ -11,6 +11,8 @@ texture = ExtResource("1_h3kvc")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1770845438]
 position = Vector2(12, 0)
+scale = Vector2(0.86875, 0.6433334)
+range_layer_max = 1
 texture = ExtResource("2_wm4p2")
 offset = Vector2(400, 0)
 

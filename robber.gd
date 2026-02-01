@@ -8,12 +8,10 @@ func play_smash():
 	animation.play("smash")
 	
 func play_stolen():
-	animation.stop()
 	animation.play("stolen")
-	print("playing stolen")
+
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 		play_stolen()
-		print("Done smashing")
 	

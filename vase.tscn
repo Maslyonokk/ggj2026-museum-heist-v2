@@ -199,4 +199,9 @@ script = ExtResource("5_wjor6")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=998171616]
 texture = ExtResource("3_1rscs")
 
+[node name="Timer" type="Timer" parent="." unique_id=1399362909]
+wait_time = 0.65
+one_shot = true
+
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

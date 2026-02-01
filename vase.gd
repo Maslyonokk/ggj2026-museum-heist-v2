@@ -1,15 +1,22 @@
 extends AnimatedSprite2D
 
 @onready var vaseSprite : Sprite2D = get_node("Sprite2D")
+@onready var timer : Timer = get_node("Timer")
 
 func _ready() -> void:
 	play("default")
 	
 func glass_break():
-	play("breaking")
+	timer.start()
+	
 
 func take_vase():
 	play("vase_gone")
 
 func _on_animation_finished() -> void:
-		play("glass_broken")
+		play("vase_gone")
+		vaseSprite.visible = false
+
+
+func _on_timer_timeout() -> void:
+	play("breaking")
