@@ -16,7 +16,7 @@ var robber_seen : bool = false
 @onready var guard_path_follow : PathFollow2D = get_node("../GuardPath/PathFollow2D")
 var guard_moving : bool = true
 var guard_distracted : bool = false
-@onready var flashlight : Sprite2D
+@onready var flashlight : Sprite2D = get_node("../GuardPath/PathFollow2D/Guard/Flashlight")
 
 var distraction_position : Vector2
 
@@ -37,14 +37,53 @@ func _on_speaker_speaker_playing() -> void:
 	print("Speaker playing")
 	distraction_position = speaker.get_global_position()
 	print(distraction_position)
-	guard_distracted = true
-	guard_moving = false
-	flashlight.look_at(distraction_position)
+	guard_distract(distraction_position)
 
 
 func _on_speaker_speaker_stopped() -> void:
 	print("Speaker stopped")
 	guard_distracted = false
 	guard_moving = true
+	flashlight.rotation = 0
+
+
+func guard_distract(distraction_position):
+	guard_distracted = true
+	guard_moving = false
+	flashlight.look_at(distraction_position)
+	guard.distracted()
 	
-	
+func guard_undistract():
+	guard_distracted = false
+	guard_moving = true
+	flashlight.rotation = 0
+
+
+func _on_guard_done_being_distracted() -> void:
+	guard_undistract()
+	print("Guard going back to patrol after being distracted for a period of time")
+
+
+
+func _on_window_window_broken(pos: Variant) -> void:
+	print(pos)
+	distraction_position = pos
+	guard_distract(distraction_position)
+
+
+func _on_window_2_window_broken(pos: Variant) -> void:
+	print(pos)
+	distraction_position = pos
+	guard_distract(distraction_position)
+
+
+func _on_window_3_window_broken(pos: Variant) -> void:
+	print(pos)
+	distraction_position = pos
+	guard_distract(distraction_position)
+
+
+func _on_window_4_window_broken(pos: Variant) -> void:
+	print(pos)
+	distraction_position = pos
+	guard_distract(distraction_position)

@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dsqfu6vy6ee13" path="res://guard.tscn" id="5_crycw"]
 [ext_resource type="PackedScene" uid="uid://bkudit1urnh41" path="res://flashlight.tscn" id="6_crycw"]
 [ext_resource type="PackedScene" uid="uid://dg32mv1p20fmu" path="res://speaker.tscn" id="7_i2041"]
+[ext_resource type="PackedScene" uid="uid://c0cyr3ua7d5s5" path="res://window.tscn" id="8_xy4tn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v38iq"]
 texture = ExtResource("1_dopym")
@@ -69,5 +70,22 @@ rotates = false
 [node name="Speaker" parent="." unique_id=1603124733 instance=ExtResource("7_i2041")]
 position = Vector2(43, 518)
 
+[node name="Window" parent="." unique_id=236289491 instance=ExtResource("8_xy4tn")]
+position = Vector2(226, 186)
+
+[node name="Window2" parent="." unique_id=336313960 instance=ExtResource("8_xy4tn")]
+position = Vector2(411, 186)
+
+[node name="Window3" parent="." unique_id=618868173 instance=ExtResource("8_xy4tn")]
+position = Vector2(721, 186)
+
+[node name="Window4" parent="." unique_id=1005587309 instance=ExtResource("8_xy4tn")]
+position = Vector2(901, 186)
+
+[connection signal="done_being_distracted" from="GuardPath/PathFollow2D/Guard" to="EventHandler" method="_on_guard_done_being_distracted"]
 [connection signal="speaker_playing" from="Speaker" to="EventHandler" method="_on_speaker_speaker_playing"]
 [connection signal="speaker_stopped" from="Speaker" to="EventHandler" method="_on_speaker_speaker_stopped"]
+[connection signal="window_broken" from="Window" to="EventHandler" method="_on_window_window_broken"]
+[connection signal="window_broken" from="Window2" to="EventHandler" method="_on_window_2_window_broken"]
+[connection signal="window_broken" from="Window3" to="EventHandler" method="_on_window_3_window_broken"]
+[connection signal="window_broken" from="Window4" to="EventHandler" method="_on_window_4_window_broken"]
