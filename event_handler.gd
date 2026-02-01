@@ -16,6 +16,7 @@ var robber_seen : bool = false
 @onready var guard_path_follow : PathFollow2D = get_node("../GuardPath/PathFollow2D")
 var guard_moving : bool = true
 var guard_distracted : bool = false
+var guard_distracted_with_glass : bool = false
 @onready var flashlight : Sprite2D = get_node("../GuardPath/PathFollow2D/Guard/Flashlight")
 
 var distraction_position : Vector2
@@ -29,6 +30,9 @@ var vase_stolen : bool = false
 @onready var speaker : Area2D = get_node("../Speaker")
 
 @onready var ui : Control = get_node("../Control")
+
+var game_lost : bool = false
+var glass_broke : bool = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -50,7 +54,8 @@ func _on_speaker_speaker_playing() -> void:
 func _on_speaker_speaker_stopped() -> void:
 	print("Speaker stopped")
 	guard_distracted = false
-	guard_moving = true
+	if !game_lost:
+		guard_moving = true
 	flashlight.rotation = 0
 
 
@@ -64,11 +69,25 @@ func guard_undistract():
 	guard_distracted = false
 	guard_moving = true
 	flashlight.rotation = 0
-
+	if glass_broke:
+		flashlight.rotation = 3.142
+	guard_distracted_with_glass = false
+	
 
 func _on_guard_done_being_distracted() -> void:
-	guard_undistract()
-	print("Guard going back to patrol after being distracted for a period of time")
+	if !game_lost:
+		guard_undistract()
+		print("Guard going back to patrol after being distracted for a period of time")
+
+func _on_flashlight_robber_spotted() -> void:
+	robber_seen = true
+	if robber_tresspassing:
+		game_over()
+
+
+func _on_flashlight_robber_unspotted() -> void:
+	robber_seen = false
+
 
 
 
@@ -76,24 +95,37 @@ func _on_window_window_broken(pos: Variant) -> void:
 	print(pos)
 	distraction_position = pos
 	guard_distract(distraction_position)
+	guard_distracted_with_glass = true
+	glass_broke = true
+	guard_speed *= -1
+	
 
 
 func _on_window_2_window_broken(pos: Variant) -> void:
 	print(pos)
 	distraction_position = pos
 	guard_distract(distraction_position)
+	guard_distracted_with_glass = true
+	glass_broke = true
+	guard_speed *= -1
 
 
 func _on_window_3_window_broken(pos: Variant) -> void:
 	print(pos)
 	distraction_position = pos
 	guard_distract(distraction_position)
+	guard_distracted_with_glass = true
+	glass_broke = true
+	guard_speed *= -1
 
 
 func _on_window_4_window_broken(pos: Variant) -> void:
 	print(pos)
 	distraction_position = pos
 	guard_distract(distraction_position)
+	guard_distracted_with_glass = true
+	glass_broke = true
+	guard_speed *= -1
 
 
 func _on_electrical_box_elbox_messed_with() -> void:
@@ -102,8 +134,6 @@ func _on_electrical_box_elbox_messed_with() -> void:
 		flashlight.look_at(elbox.global_position)
 		if robber_tresspassing:
 			game_over()
-
-
 
 func _on_electrical_box_elbox_turned_off() -> void:
 	laser.turn_off()
@@ -115,6 +145,10 @@ func break_display_case():
 	robber_moving = false
 	robber.play_smash()
 	vase.glass_break()
+	if !guard_distracted_with_glass:
+		flashlight.look_at(vase.global_position)
+		game_over()
+	
 	
 	
 
@@ -128,6 +162,7 @@ func _on_control_restart() -> void:
 	get_tree().reload_current_scene()
 
 func game_over():
+	game_lost = true
 	print("game over!!!!!!!!!!!!!")
 	robber_moving  = false
 	guard_moving = false
@@ -136,4 +171,14 @@ func game_over():
 	
 
 func game_won():
-	pass
+	ui.game_won()
+
+
+func _on_vase_animation_finished() -> void:
+	if !game_lost:
+		robber_moving = true
+
+
+func _on_exit_body_entered(body: Node2D) -> void:
+	if body.is_in_group("robber"):
+		game_won()

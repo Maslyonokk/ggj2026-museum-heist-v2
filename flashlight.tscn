@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://bkudit1urnh41"]
 
 [ext_resource type="Texture2D" uid="uid://d250k4bjpq10v" path="res://Assets/flashlight.png" id="1_h3kvc"]
+[ext_resource type="Script" uid="uid://d3575j2gr5h1g" path="res://flashlight.gd" id="2_btnnp"]
 [ext_resource type="Texture2D" uid="uid://cmvhurm8sjsg1" path="res://Assets/light_big.png" id="2_wm4p2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btnnp"]
-size = Vector2(796, 441)
+size = Vector2(796, 330.75128)
 
 [node name="Flashlight" type="Sprite2D" unique_id=818948262]
 texture = ExtResource("1_h3kvc")
+script = ExtResource("2_btnnp")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1770845438]
 position = Vector2(12, 0)
@@ -21,3 +23,6 @@ offset = Vector2(400, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PointLight2D/Area2D" unique_id=2122333164]
 position = Vector2(398, -2.5)
 shape = SubResource("RectangleShape2D_btnnp")
+
+[connection signal="body_entered" from="PointLight2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PointLight2D/Area2D" to="." method="_on_area_2d_body_exited"]

@@ -30,9 +30,9 @@ sources/3 = SubResource("TileSetAtlasSource_v8kj3")
 
 [sub_resource type="Curve2D" id="Curve2D_ootpb"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 121, 320, 0, 0, 0, 0, 312, 326, 0, 0, 0, 0, 423, 346, 0, 0, 0, 0, 545, 332, 0, 0, 0, 0, 560, 263, 0, 0, 0, 0, 586, 321, 0, 0, 0, 0, 653, 344, 0, 0, 0, 0, 758, 352, 0, 0, 0, 0, 827, 354, 0, 0, 0, 0, 886, 353, 0, 0, 0, 0, 944, 341, 0, 0, 0, 0, 980, 350)
+"points": PackedVector2Array(0, 0, 0, 0, 121, 320, 0, 0, 0, 0, 312, 326, 0, 0, 0, 0, 423, 346, 0, 0, 0, 0, 545, 332, 0, 0, 0, 0, 560, 263, 0, 0, 0, 0, 586, 321, 0, 0, 0, 0, 653, 344, 0, 0, 0, 0, 758, 352, 0, 0, 0, 0, 827, 354, 0, 0, 0, 0, 867, 363, 0, 0, 0, 0, 922, 373, 0, 0, 0, 0, 990, 388, 0, 0, 0, 0, 927, 278, 0, 0, 0, 0, 739, 287, 0, 0, 0, 0, 603, 283, 0, 0, 0, 0, 421, 285, 0, 0, 0, 0, 210, 275, 0, 0, 0, 0, 59, 297, 0, 0, 0, 0, -44, 297)
 }
-point_count = 12
+point_count = 19
 
 [sub_resource type="Curve2D" id="Curve2D_v38iq"]
 _data = {
@@ -42,6 +42,9 @@ point_count = 14
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mx85b"]
 radius = 42.0119
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hx44q"]
+size = Vector2(82, 158)
 
 [node name="Node2D" type="Node2D" unique_id=444309336]
 
@@ -97,7 +100,7 @@ position = Vector2(558, 199)
 position = Vector2(855, 222)
 
 [node name="Vase" parent="." unique_id=894306001 instance=ExtResource("11_mx85b")]
-position = Vector2(1012, 343)
+position = Vector2(1010, 371)
 
 [node name="Area2D" type="Area2D" parent="Vase" unique_id=1145468739]
 
@@ -117,7 +120,15 @@ offset_top = 337.0
 offset_right = 588.0
 offset_bottom = 337.0
 
+[node name="Exit" type="Area2D" parent="." unique_id=1314171916]
+position = Vector2(-42, 293)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=1491036979]
+shape = SubResource("RectangleShape2D_hx44q")
+
 [connection signal="done_being_distracted" from="GuardPath/PathFollow2D/Guard" to="EventHandler" method="_on_guard_done_being_distracted"]
+[connection signal="robber_spotted" from="GuardPath/PathFollow2D/Guard/Flashlight" to="EventHandler" method="_on_flashlight_robber_spotted"]
+[connection signal="robber_unspotted" from="GuardPath/PathFollow2D/Guard/Flashlight" to="EventHandler" method="_on_flashlight_robber_unspotted"]
 [connection signal="speaker_playing" from="Speaker" to="EventHandler" method="_on_speaker_speaker_playing"]
 [connection signal="speaker_stopped" from="Speaker" to="EventHandler" method="_on_speaker_speaker_stopped"]
 [connection signal="window_broken" from="Window" to="EventHandler" method="_on_window_window_broken"]
@@ -126,5 +137,7 @@ offset_bottom = 337.0
 [connection signal="window_broken" from="Window4" to="EventHandler" method="_on_window_4_window_broken"]
 [connection signal="elbox_messed_with" from="ElectricalBox" to="EventHandler" method="_on_electrical_box_elbox_messed_with"]
 [connection signal="elbox_turned_off" from="ElectricalBox" to="EventHandler" method="_on_electrical_box_elbox_turned_off"]
+[connection signal="animation_finished" from="Vase" to="EventHandler" method="_on_vase_animation_finished"]
 [connection signal="body_entered" from="Vase/Area2D" to="EventHandler" method="_on_area_2d_body_entered"]
 [connection signal="restart" from="Control" to="EventHandler" method="_on_control_restart"]
+[connection signal="body_entered" from="Exit" to="EventHandler" method="_on_exit_body_entered"]
