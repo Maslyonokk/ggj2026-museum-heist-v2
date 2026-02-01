@@ -14,6 +14,5 @@ func game_won():
 func _on_retry_button_pressed() -> void:
 	restart.emit()
 
-
 func _on_retry_button_2_pressed() -> void:
 	restart.emit()

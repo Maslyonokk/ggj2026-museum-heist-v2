@@ -9,9 +9,8 @@ func _ready() -> void:
 func glass_break():
 	timer.start()
 	
-
-func take_vase():
-	play("vase_gone")
+#func take_vase(): #Unused function
+	#play("vase_gone")
 
 func _on_animation_finished() -> void:
 		play("vase_gone")

@@ -13,9 +13,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("robber"):
 		elbox_messed_with.emit()
 		timer.start()
-		speed_scale = 5
+		speed_scale = 5 #animation speeds up, so the lights blink faster right before the box is turned off
 
 func _on_timer_timeout() -> void:
 	elbox_turned_off.emit()
-	stop()
+	stop() #stop playing the animation
 	

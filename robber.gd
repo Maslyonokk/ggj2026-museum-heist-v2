@@ -11,7 +11,6 @@ func play_stolen():
 	animation.play("stolen")
 
 
-
 func _on_animated_sprite_2d_animation_finished() -> void:
 		play_stolen()
 	

@@ -14,16 +14,9 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		speaker_playing.emit()
 		timer.start()
 
-				#animation.stop()
-				#speaker_stopped.emit()
-
-
 
 func _on_mouse_exited() -> void:
-	pass
-
-	
-	
+	pass #left over from the speaker needing to be held down
 
 
 func _on_timer_timeout() -> void:
