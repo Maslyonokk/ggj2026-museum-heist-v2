@@ -39,7 +39,6 @@ position = Vector2(3, 21)
 shape = SubResource("CircleShape2D_ixx5x")
 
 [node name="Timer" type="Timer" parent="." unique_id=2051829163]
-wait_time = 1.5
 one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

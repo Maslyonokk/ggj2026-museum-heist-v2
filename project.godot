@@ -15,6 +15,10 @@ run/main_scene="uid://rhry7g8wcy6i"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[editor]
+
+movie_writer/movie_file="D:/Game Dev/GGJ2026/video_v2_fin.avi"
+
 [global_group]
 
 robber=""
