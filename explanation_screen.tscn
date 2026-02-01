@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://rhry7g8wcy6i"]
+
+[ext_resource type="Script" uid="uid://byl0n1smg5fg7" path="res://explanation_screen.gd" id="1_1fewc"]
+[ext_resource type="Texture2D" uid="uid://dxu03l5631uod" path="res://Assets/plan.png" id="2_hcwb2"]
+[ext_resource type="Texture2D" uid="uid://doy8dm12vlgfn" path="res://Assets/goal2.png" id="3_43mj2"]
+[ext_resource type="Texture2D" uid="uid://ubyu15qckt3w" path="res://Assets/window.png" id="4_f1101"]
+[ext_resource type="Texture2D" uid="uid://cu3m8egyd2tkx" path="res://Assets/speaker (1).png" id="5_4hi7y"]
+[ext_resource type="Texture2D" uid="uid://bw6kyl253kaud" path="res://Assets/electricalbox.png" id="6_2fpub"]
+[ext_resource type="Texture2D" uid="uid://w5tf73w1kh46" path="res://Assets/player.png" id="7_2fn4f"]
+[ext_resource type="Texture2D" uid="uid://ck3tagnhimqot" path="res://Assets/smash.png" id="8_buaah"]
+
+[node name="ExplanationScreen" type="Control" unique_id=935543688]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1fewc")
+
+[node name="Explanation" type="TextureRect" parent="." unique_id=26762974]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -240.0
+offset_right = 320.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.345, 1.345)
+pivot_offset = Vector2(320, 240)
+texture = ExtResource("2_hcwb2")
+
+[node name="ExplanationText" type="Label" parent="Explanation" unique_id=67089365]
+layout_mode = 0
+offset_left = 94.7212
+offset_top = 53.38291
+offset_right = 296.7212
+offset_bottom = 76.38291
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Help me rob the museum!"
+
+[node name="ExplanationText2" type="Label" parent="Explanation" unique_id=2008993325]
+layout_mode = 0
+offset_left = 62.007446
+offset_top = 109.88849
+offset_right = 341.00745
+offset_bottom = 158.88849
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Mask my sounds at the right time 
+so we can steal the treasure."
+horizontal_alignment = 1
+
+[node name="ExplanationText3" type="Label" parent="Explanation" unique_id=1754400996]
+layout_mode = 0
+offset_left = 508.10413
+offset_top = 443.7175
+offset_right = 787.1041
+offset_bottom = 544.7175
+text = "Click anywhere to continue..."
+
+[node name="ExplanationText4" type="Label" parent="Explanation" unique_id=644947748]
+layout_mode = 0
+offset_left = 67.211914
+offset_top = 242.97398
+offset_right = 346.2119
+offset_bottom = 343.974
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "When I am about to do this..."
+horizontal_alignment = 1
+
+[node name="ExplanationText5" type="Label" parent="Explanation" unique_id=1227884438]
+layout_mode = 0
+offset_left = 64.23794
+offset_top = 354.49814
+offset_right = 362.23795
+offset_bottom = 455.49814
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Click these items to distract the guard:"
+horizontal_alignment = 1
+
+[node name="Goal2" type="Sprite2D" parent="Explanation" unique_id=2009326534]
+position = Vector2(309.62082, 308.43124)
+texture = ExtResource("3_43mj2")
+vframes = 7
+
+[node name="Window" type="Sprite2D" parent="Explanation" unique_id=1271221944]
+position = Vector2(287.28625, 410.26022)
+scale = Vector2(0.74349445, 0.74349445)
+texture = ExtResource("4_f1101")
+
+[node name="Speaker2" type="Sprite2D" parent="Explanation" unique_id=882592761]
+position = Vector2(154.20076, 410.26025)
+scale = Vector2(0.74349445, 0.74349445)
+texture = ExtResource("5_4hi7y")
+vframes = 4
+
+[node name="Electricalbox" type="Sprite2D" parent="Explanation" unique_id=839458987]
+position = Vector2(169.84389, 311.4052)
+texture = ExtResource("6_2fpub")
+vframes = 2
+
+[node name="Player" type="Sprite2D" parent="Explanation" unique_id=1703380546]
+position = Vector2(128.9517, 315.86615)
+texture = ExtResource("7_2fn4f")
+
+[node name="Smash" type="Sprite2D" parent="Explanation" unique_id=43128915]
+position = Vector2(261.29367, 310.66174)
+texture = ExtResource("8_buaah")
+vframes = 15
+frame = 11
+
+[node name="Button" type="Button" parent="." unique_id=1626868814]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GGJ 2026 - Museum Heist v2"
-run/main_scene="uid://cwq3ptpnh8glh"
+run/main_scene="uid://rhry7g8wcy6i"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
