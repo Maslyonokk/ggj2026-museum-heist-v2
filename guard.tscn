@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dsqfu6vy6ee13"]
+
+[ext_resource type="Texture2D" uid="uid://dpnx5fpnkye0b" path="res://Assets/guard.png" id="1_opr0s"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_30cdx"]
+radius = 15.0
+height = 62.0
+
+[node name="Guard" type="CharacterBody2D" unique_id=1914350391]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=509104835]
+texture = ExtResource("1_opr0s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=616018969]
+shape = SubResource("CapsuleShape2D_30cdx")
