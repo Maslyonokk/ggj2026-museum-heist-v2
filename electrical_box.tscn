@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bayu7ppu8xocy"]
+
+[ext_resource type="Texture2D" uid="uid://bw6kyl253kaud" path="res://Assets/electricalbox.png" id="1_ixx5x"]
+[ext_resource type="Script" uid="uid://bsxu13m0sf3g0" path="res://electrical_box.gd" id="2_gp17v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gp17v"]
+atlas = ExtResource("1_ixx5x")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlwja"]
+atlas = ExtResource("1_ixx5x")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_frm3r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gp17v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlwja")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ixx5x"]
+radius = 42.047592
+
+[node name="ElectricalBox" type="AnimatedSprite2D" unique_id=257575083]
+sprite_frames = SubResource("SpriteFrames_frm3r")
+script = ExtResource("2_gp17v")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1815260342]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1543585926]
+position = Vector2(4, 49)
+shape = SubResource("CircleShape2D_ixx5x")
+
+[node name="Timer" type="Timer" parent="." unique_id=2051829163]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

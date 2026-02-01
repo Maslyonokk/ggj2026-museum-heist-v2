@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bkudit1urnh41" path="res://flashlight.tscn" id="6_crycw"]
 [ext_resource type="PackedScene" uid="uid://dg32mv1p20fmu" path="res://speaker.tscn" id="7_i2041"]
 [ext_resource type="PackedScene" uid="uid://c0cyr3ua7d5s5" path="res://window.tscn" id="8_xy4tn"]
+[ext_resource type="PackedScene" uid="uid://bayu7ppu8xocy" path="res://electrical_box.tscn" id="9_usj0q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v38iq"]
 texture = ExtResource("1_dopym")
@@ -81,6 +82,9 @@ position = Vector2(721, 186)
 
 [node name="Window4" parent="." unique_id=1005587309 instance=ExtResource("8_xy4tn")]
 position = Vector2(901, 186)
+
+[node name="ElectricalBox" parent="." unique_id=257575083 instance=ExtResource("9_usj0q")]
+position = Vector2(558, 215)
 
 [connection signal="done_being_distracted" from="GuardPath/PathFollow2D/Guard" to="EventHandler" method="_on_guard_done_being_distracted"]
 [connection signal="speaker_playing" from="Speaker" to="EventHandler" method="_on_speaker_speaker_playing"]
