@@ -1,0 +1,168 @@
+[gd_scene format=4 uid="uid://on3d54hpu0xp"]
+
+[ext_resource type="Script" uid="uid://podgiuptebn3" path="res://title_screen.gd" id="1_rhgbh"]
+[ext_resource type="Texture2D" uid="uid://6feq7ttuddh6" path="res://Assets/tile.png" id="2_skmiq"]
+[ext_resource type="Texture2D" uid="uid://c5f6vfighvf6m" path="res://Assets/wall.png" id="3_lf08s"]
+[ext_resource type="Texture2D" uid="uid://dpnx5fpnkye0b" path="res://Assets/guard.png" id="4_n1yhu"]
+[ext_resource type="Texture2D" uid="uid://d250k4bjpq10v" path="res://Assets/flashlight.png" id="5_q7w76"]
+[ext_resource type="Script" uid="uid://d3575j2gr5h1g" path="res://flashlight.gd" id="6_wot2p"]
+[ext_resource type="Texture2D" uid="uid://cmvhurm8sjsg1" path="res://Assets/light_big.png" id="7_kvwfe"]
+[ext_resource type="Texture2D" uid="uid://4v0ba6rl4var" path="res://Assets/steal.png" id="8_l4tom"]
+[ext_resource type="Texture2D" uid="uid://ubyu15qckt3w" path="res://Assets/window.png" id="9_y8ura"]
+[ext_resource type="Texture2D" uid="uid://dpndqh40pl2ic" path="res://Assets/window2.png" id="10_aav61"]
+[ext_resource type="Texture2D" uid="uid://l412ukotg5wq" path="res://Assets/title.png" id="11_a64np"]
+[ext_resource type="Texture2D" uid="uid://cw8hxg50b7y6x" path="res://Assets/glass.png" id="11_lf08s"]
+[ext_resource type="Texture2D" uid="uid://dfj7pvrutauyy" path="res://Assets/pedestal.png" id="12_n1yhu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g2tdu"]
+texture = ExtResource("2_skmiq")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7yan6"]
+texture = ExtResource("3_lf08s")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4h4vs"]
+tile_size = Vector2i(64, 64)
+sources/2 = SubResource("TileSetAtlasSource_g2tdu")
+sources/3 = SubResource("TileSetAtlasSource_7yan6")
+
+[node name="Control" type="Control" unique_id=1539316591]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rhgbh")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=936451987]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1370559, 0.21124968, 0.27403036, 1)
+
+[node name="Control" type="Control" parent="." unique_id=505311552]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.695
+offset_top = -17.679993
+offset_right = -235.69507
+offset_bottom = 22.320007
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.07, 2.07)
+pivot_offset = Vector2(222.595, 599.945)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Control" unique_id=723102693]
+position = Vector2(-60.311, 163.299)
+tile_map_data = PackedByteArray("AAAAAAUAAgAAAAAAAAABAAUAAgAAAAAAAAACAAUAAgAAAAAAAAADAAUAAgAAAAAAAAAEAAUAAgAAAAAAAAAFAAUAAgAAAAAAAAAGAAUAAgAAAAAAAAAHAAUAAgAAAAAAAAAIAAUAAgAAAAAAAAAJAAUAAgAAAAAAAAAKAAUAAgAAAAAAAAALAAUAAgAAAAAAAAAMAAUAAgAAAAAAAAANAAUAAgAAAAAAAAAOAAUAAgAAAAAAAAAPAAUAAgAAAAAAAAAQAAUAAgAAAAAAAAARAAUAAgAAAAAAAAARAAYAAgAAAAAAAAAQAAYAAgAAAAAAAAAPAAYAAgAAAAAAAAAOAAYAAgAAAAAAAAANAAYAAgAAAAAAAAAMAAYAAgAAAAAAAAALAAYAAgAAAAAAAAAKAAYAAgAAAAAAAAAJAAYAAgAAAAAAAAAIAAYAAgAAAAAAAAAHAAYAAgAAAAAAAAAGAAYAAgAAAAAAAAAFAAYAAgAAAAAAAAAEAAYAAgAAAAAAAAADAAYAAgAAAAAAAAACAAYAAgAAAAAAAAABAAYAAgAAAAAAAAAAAAYAAgAAAAAAAAAAAAcAAgAAAAAAAAABAAcAAgAAAAAAAAACAAcAAgAAAAAAAAADAAcAAgAAAAAAAAAEAAcAAgAAAAAAAAAFAAcAAgAAAAAAAAAGAAcAAgAAAAAAAAAHAAcAAgAAAAAAAAAIAAcAAgAAAAAAAAAJAAcAAgAAAAAAAAAKAAcAAgAAAAAAAAALAAcAAgAAAAAAAAAMAAcAAgAAAAAAAAANAAcAAgAAAAAAAAAOAAcAAgAAAAAAAAAPAAcAAgAAAAAAAAAQAAcAAgAAAAAAAAARAAcAAgAAAAAAAAARAAgAAgAAAAAAAAAQAAgAAgAAAAAAAAAPAAgAAgAAAAAAAAAOAAgAAgAAAAAAAAANAAgAAgAAAAAAAAAMAAgAAgAAAAAAAAALAAgAAgAAAAAAAAAKAAgAAgAAAAAAAAAJAAgAAgAAAAAAAAAIAAgAAgAAAAAAAAAHAAgAAgAAAAAAAAAGAAgAAgAAAAAAAAAFAAgAAgAAAAAAAAAEAAgAAgAAAAAAAAADAAgAAgAAAAAAAAACAAgAAgAAAAAAAAABAAgAAgAAAAAAAAAAAAgAAgAAAAAAAAAAAAkAAgAAAAAAAAABAAkAAgAAAAAAAAACAAkAAgAAAAAAAAADAAkAAgAAAAAAAAAEAAkAAgAAAAAAAAAFAAkAAgAAAAAAAAAGAAkAAgAAAAAAAAAHAAkAAgAAAAAAAAAIAAkAAgAAAAAAAAAJAAkAAgAAAAAAAAAKAAkAAgAAAAAAAAALAAkAAgAAAAAAAAAMAAkAAgAAAAAAAAANAAkAAgAAAAAAAAAOAAkAAgAAAAAAAAAPAAkAAgAAAAAAAAAQAAkAAgAAAAAAAAARAAkAAgAAAAAAAAAAAAQAAgAAAAAAAAABAAQAAgAAAAAAAAACAAQAAgAAAAAAAAADAAQAAgAAAAAAAAAEAAQAAgAAAAAAAAAFAAQAAgAAAAAAAAAGAAQAAgAAAAAAAAAHAAQAAgAAAAAAAAAIAAQAAgAAAAAAAAAJAAQAAgAAAAAAAAAKAAQAAgAAAAAAAAALAAQAAgAAAAAAAAAQAAQAAgAAAAAAAAARAAQAAgAAAAAAAAAPAAQAAgAAAAAAAAAOAAQAAgAAAAAAAAANAAQAAgAAAAAAAAAMAAQAAgAAAAAAAAAAAAMAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAAAAAwAAAAAAAAABAAAAAwAAAAAAAAABAAEAAwAAAAAAAAABAAIAAwAAAAAAAAABAAMAAwAAAAAAAAACAAMAAwAAAAAAAAACAAIAAwAAAAAAAAACAAEAAwAAAAAAAAACAAAAAwAAAAAAAAADAAAAAwAAAAAAAAAEAAEAAwAAAAAAAAADAAEAAwAAAAAAAAADAAIAAwAAAAAAAAADAAMAAwAAAAAAAAAEAAMAAwAAAAAAAAAFAAMAAwAAAAAAAAAGAAMAAwAAAAAAAAAHAAMAAwAAAAAAAAAIAAMAAwAAAAAAAAAJAAMAAwAAAAAAAAAKAAMAAwAAAAAAAAALAAMAAwAAAAAAAAAMAAMAAwAAAAAAAAANAAMAAwAAAAAAAAAOAAMAAwAAAAAAAAAPAAMAAwAAAAAAAAAQAAMAAwAAAAAAAAARAAMAAwAAAAAAAAARAAIAAwAAAAAAAAARAAEAAwAAAAAAAAARAAAAAwAAAAAAAAAQAAAAAwAAAAAAAAAPAAAAAwAAAAAAAAAOAAAAAwAAAAAAAAANAAAAAwAAAAAAAAAMAAAAAwAAAAAAAAALAAAAAwAAAAAAAAAKAAAAAwAAAAAAAAAJAAAAAwAAAAAAAAAIAAAAAwAAAAAAAAAHAAAAAwAAAAAAAAAGAAAAAwAAAAAAAAAFAAAAAwAAAAAAAAAEAAAAAwAAAAAAAAAFAAEAAwAAAAAAAAAGAAEAAwAAAAAAAAAHAAEAAwAAAAAAAAAIAAEAAwAAAAAAAAAJAAEAAwAAAAAAAAAKAAEAAwAAAAAAAAALAAEAAwAAAAAAAAAMAAEAAwAAAAAAAAANAAEAAwAAAAAAAAAOAAEAAwAAAAAAAAAPAAEAAwAAAAAAAAAQAAEAAwAAAAAAAAAQAAIAAwAAAAAAAAAPAAIAAwAAAAAAAAAOAAIAAwAAAAAAAAANAAIAAwAAAAAAAAAMAAIAAwAAAAAAAAALAAIAAwAAAAAAAAAKAAIAAwAAAAAAAAAJAAIAAwAAAAAAAAAIAAIAAwAAAAAAAAAHAAIAAwAAAAAAAAAGAAIAAwAAAAAAAAAFAAIAAwAAAAAAAAAEAAIAAwAAAAAAAAA=")
+tile_set = SubResource("TileSet_4h4vs")
+
+[node name="Guard" type="Sprite2D" parent="Control" unique_id=1209643286]
+position = Vector2(229, 433)
+texture = ExtResource("4_n1yhu")
+
+[node name="Flashlight" type="Sprite2D" parent="Control/Guard" unique_id=818948262]
+position = Vector2(-12, -2)
+texture = ExtResource("5_q7w76")
+script = ExtResource("6_wot2p")
+
+[node name="PointLight2D" type="PointLight2D" parent="Control/Guard/Flashlight" unique_id=1770845438]
+position = Vector2(12, 0)
+scale = Vector2(0.86875, 0.6433334)
+range_layer_max = 1
+texture = ExtResource("7_kvwfe")
+offset = Vector2(400, 0)
+
+[node name="Steal" type="Sprite2D" parent="Control" unique_id=935604726]
+position = Vector2(145, 411)
+texture = ExtResource("8_l4tom")
+
+[node name="Window" type="Sprite2D" parent="Control" unique_id=918312960]
+position = Vector2(190, 381)
+texture = ExtResource("9_y8ura")
+
+[node name="Window2" type="Sprite2D" parent="Control" unique_id=486996146]
+position = Vector2(333, 381)
+texture = ExtResource("10_aav61")
+vframes = 9
+frame = 2
+
+[node name="Window3" type="Sprite2D" parent="Control" unique_id=1474571647]
+position = Vector2(54.044277, 380.97638)
+texture = ExtResource("9_y8ura")
+
+[node name="Glass" type="Sprite2D" parent="Control" unique_id=604938821]
+position = Vector2(416.36313, 400.30005)
+texture = ExtResource("11_lf08s")
+vframes = 9
+frame = 8
+
+[node name="Pedestal" type="Sprite2D" parent="Control" unique_id=1167585920]
+position = Vector2(417.8124, 399.33386)
+texture = ExtResource("12_n1yhu")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1182897683]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -280.0
+offset_right = 320.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_a64np")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=45953197]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 437.0
+offset_top = 438.0
+offset_right = 437.0
+offset_bottom = 438.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.24000001, 0.03999877)
+color = Color(0.1370559, 0.21124968, 0.27403036, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1524926042]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -127.0
+offset_top = -209.0
+offset_right = 128.0
+offset_bottom = -186.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Click anywhere to start the game"
+
+[node name="Button" type="Button" parent="." unique_id=1024639382]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

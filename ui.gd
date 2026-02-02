@@ -13,6 +13,9 @@ func game_won():
 
 func _on_retry_button_pressed() -> void:
 	restart.emit()
+	
+func _on_help_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://explanation_screen.tscn")
 
 func _on_retry_button_2_pressed() -> void:
 	restart.emit()

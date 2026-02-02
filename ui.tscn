@@ -64,13 +64,28 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -47.0
+offset_left = -97.0
 offset_top = -62.0
-offset_right = 47.0
+offset_right = -3.0002136
 offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Restart"
+
+[node name="HelpButton" type="Button" parent="GameOverWindow" unique_id=38125478]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -62.0
+offset_right = 96.99979
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Help"
 
 [node name="GameWonWindow" type="ColorRect" parent="." unique_id=379344072]
 visible = false
@@ -134,4 +149,5 @@ grow_vertical = 0
 text = "Restart"
 
 [connection signal="pressed" from="GameOverWindow/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="GameOverWindow/HelpButton" to="." method="_on_help_button_pressed"]
 [connection signal="pressed" from="GameWonWindow/RetryButton2" to="." method="_on_retry_button_2_pressed"]
